@@ -1,0 +1,470 @@
+/*-------------------------------------------------------*/
+/* general  */
+/*-------------------------------------------------------*/
+
+
+.input-group-text.with-icon {
+    justify-content: center;
+    min-width: 2.5rem;
+    padding-left: 0rem;
+    padding-right: 0rem;
+    background-color: #f7f7f7;
+}
+
+/*-------------------------------------------------------*/
+/* tabs  */
+/*-------------------------------------------------------*/
+
+
+.nav-tabs-custom {
+
+    > .nav-tabs {
+        padding-left: 15px;
+        background: rgb(250, 250, 250);
+        padding-top: 15px;
+        border-top-left-radius: 0.3rem;
+        border-top-right-radius: 0.3rem;
+
+        .no-border-radius{
+            border-radius: 0;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+        }
+
+        .text-red {
+            color: $red;
+        }
+
+        .hide {
+            display: none;
+        }
+    }
+}
+.form .nav-tabs-custom {
+    margin-top: -1rem;
+}
+
+.form{
+    .tab-content {
+        padding: 2rem 0 0.25rem 0;
+    }
+}
+
+.form-footer,.card-footer {
+    .row {
+        width: 100%;
+        margin-bottom: 0;
+        padding-left:0.3rem;
+    }
+}
+
+.tab-pane{
+    background:#FFF;
+}
+
+/*-------------------------------------------------------*/
+/* selection option  */
+/*-------------------------------------------------------*/
+
+select {
+    option:hover,
+    option:focus,
+    option:active {
+        background: linear-gradient(#d6d6d6, #d6d6d6);
+        background-color: #d6d6d6 !important; /* for IE */
+        color: #4d4d4d !important;
+    }
+
+    option:checked {
+        background: linear-gradient($primary, $primary);
+        background-color: $primary !important; /* for IE */
+        color: #fff !important;
+    }
+}
+
+body .choices[data-type*="select-one"] {
+    &:after {
+        border: 0;
+        width: 16px;
+        height: 12px;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-size: 16px 12px;
+        margin-top: -6px;
+    }
+
+    &.is-open:after {
+        transform: rotate(180deg);
+        margin-top: -6px;
+    }
+}
+
+body .choices {
+    margin-bottom: 0;
+    min-width:140px;
+
+    .choices__list--dropdown{
+        z-index:10;
+    }
+
+    &.form-control-sm{
+        padding:0;
+        .choices__inner {
+            padding: .18rem .5rem !important;
+        }
+    }
+
+    .choices__input{
+        background: #fff;
+        margin-bottom:0;
+        min-height:30px;
+    }
+    .choices__list--single {
+        padding: 0px;
+    }
+    .choices__inner {
+        background: #fff;
+        border-color: $input-border-color;
+        @include border-radius($form-select-border-radius, 0);
+        min-height: 0;
+        padding: $input-padding-y $input-padding-x !important;
+    }
+
+    &.is-focused {
+        .choices__inner {
+            color: $input-focus-color;
+            background-color: $input-focus-bg;
+            border-color: $input-focus-border-color;
+            outline: 0;
+            @if $enable-shadows {
+                @include box-shadow($input-box-shadow, $input-focus-box-shadow);
+            } @else {
+                // Avoid using mixin so we can pass custom focus shadow properly
+                box-shadow: $input-focus-box-shadow;
+            }
+        }
+    }
+
+
+    .choices__list--multiple .choices__item {
+        color: $input-focus-color;
+        background-color: #f7f7f7;
+        border-color: $input-border-color;
+        @include border-radius($form-select-border-radius, 0);
+        margin: 0.375rem 0.75rem 0.375rem 0;
+        font-size:1rem;
+    }
+
+    &.form-control-sm{
+        .choices__inner {
+            padding: 0.2rem .3rem !important;
+            line-height:0;
+        }
+
+        .choices__list--multiple .choices__item {
+            font-size:0.9rem;
+            margin: 0.1rem 0.3rem 0.1rem 0;
+            padding: 0.05rem 0.15rem;
+        }
+        .choices__list--multiple ~ .choices__input{
+            margin-bottom:0;
+            padding:0;
+        }
+    }
+
+    &[data-type*="select-one"] .choices__button{
+        margin-right:2.1rem;
+    }
+    &[data-type*="select-multiple"] .choices__button,
+    &[data-type*="text"] .choices__button{
+
+        color: $input-focus-color;
+        background-color: #f7f7f7;
+        border-color: $input-border-color !important;
+        background-image: none;
+        margin: 0 0 0 8px;
+
+        &::before{
+            position: absolute;
+            content:'×';
+            display:block;
+            text-indent:-9px;
+        }
+    }
+}
+
+/*-------------------------------------------------------*/
+/* restyleing form elements  */
+/*-------------------------------------------------------*/
+
+.form {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    .form-switch {
+        font-size: 1.2rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .help-block {
+        font-size: 0.9rem;
+        color: #72777b;
+    }
+
+    input[type="number"] {
+        -webkit-appearance: textfield;
+        -moz-appearance: textfield;
+        appearance: textfield;
+        text-align: center;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .form-group {
+        > label.asterisk::before {
+            content: "* ";
+            color: red;
+        }
+    }
+
+    .form-field-helper{
+        border: 1px solid $input-border-color;
+        @include border-radius($form-select-border-radius, 0);
+    }
+
+    .input-group {
+        .btn-light {
+            border: 1px solid $input-border-color;
+        }
+    }
+    .small-field {
+        max-width: 160px;
+    }
+    .form-value {
+        padding: 0.3rem 0;
+    }
+
+    .form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: #b5b5b5;
+        opacity: 1; /* Firefox */
+    }
+
+    .form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: #b5b5b5;
+    }
+
+    .form-control::-ms-input-placeholder { /* Microsoft Edge */
+        color: #b5b5b5;
+    }
+
+    hr,
+    .form-border{
+        background:none;
+        border-bottom: 1px solid $card-border-color;
+        opacity: 1;
+    }
+    .form-range{
+        margin-top:0.5rem;
+    }
+
+    .btn-group.grey-border{
+        margin-left:1px;
+
+        .btn {
+            color: #4d4d4d;
+            background-color:  #FFF;
+            border-color:  $input-border-color;
+        }
+
+        .btn-check:checked + .btn-outline-primary{
+            color: #FFF;
+            background: $primary;
+        }
+    }
+
+    .fieldset{
+        height: 20px;
+        border-bottom: 1px solid #eee;
+        text-align: left;
+        margin-top: 5px;
+        margin-bottom: 20px;
+    }
+
+
+
+    .fieldset-link{
+        background-color: #ffffff;
+        font-size: 16px;
+        padding: 0 10px;
+        &.collapsed .icon-angle-up:before{
+            transform: rotate(180deg);
+        }
+    }
+}
+
+/*-------------------------------------------------------*/
+/* validation extra's  */
+/*-------------------------------------------------------*/
+
+    @mixin form-validation-state-selector($state) {
+        @if ($state == "valid" or $state == "invalid") {
+            .was-validated.default-valid #{if(&, "&", "")}:#{$state},
+            #{if(&, "&", "")}.is-#{$state} {
+                @content;
+            }
+        } @else {
+            #{if(&, "&", "")}.is-#{$state} {
+                @content;
+            }
+        }
+    }
+
+    $state: "valid";
+    $icon: none;
+    $color: $input-border-color;
+    @include form-validation-state(
+        $state,
+        $color,
+        $icon,
+        $tooltip-color: color-contrast($color),
+        $tooltip-bg-color: rgba($color, $form-feedback-tooltip-opacity),
+        $focus-box-shadow: 0 0 $input-btn-focus-blur $input-focus-width
+            rgba($color, $input-btn-focus-color-opacity)
+    );
+
+    .was-validated.default-valid .form-check-input:valid ~ .form-check-label,
+    .form-check-input.is-valid ~ .form-check-label {
+        color: $body-color;
+    }
+
+/*-------------------------------------------------------*/
+/* has-many forms */
+/*-------------------------------------------------------*/
+
+    .has-many-head{
+        padding:0 1rem;
+        h4{
+            font-size:1.2rem;
+            margin: 1.5rem 0 0 0;
+        }
+    }
+    .form-delete-group,
+    .has-many-footer{
+        display:flex;
+        @media (min-width:576px) {
+            .btn{
+                margin-left:0.3rem;
+            }
+        }
+    }
+
+    .table-with-fields{
+        border: 1px solid var(--table-border-color);
+
+        .form-group{
+            margin-bottom:0;
+        }
+
+        label.form-label{
+            display:none;
+        }
+        td{
+            padding:0.75rem 0.5rem;
+
+            .remove{
+                margin-right:0.25rem;
+            }
+        }
+
+        &.vertical-align-top td{
+            vertical-align:top;
+        }
+        &.vertical-align-middle td{
+            vertical-align:middle;
+        }
+        &.vertical-align-bottom td{
+            vertical-align:bottom;
+        }
+    }
+
+/*-------------------------------------------------------*/
+/* dual-list */
+/*-------------------------------------------------------*/
+
+    .dual-list{
+        display:flex;
+        align-items: flex-start;
+
+        li{
+            list-style: none !important;
+        }
+
+        div{
+            width: calc(50% - 2.5rem);
+        }
+
+        .list-group{
+            border: $list-group-border-width solid $list-group-border-color;
+            height:200px;
+            overflow-y: auto;
+            li,li.active{
+                border-left:0;
+                border-right:0;
+                border-bottom:1px solid #ececec !important;
+                cursor: pointer;
+            }
+            .list-group-item + .list-group-item.active{
+                margin-top:0;
+                border-top-width:0;
+            }
+            li:first-child{
+                border-top:0px;
+            }
+            li:last-child{
+                border-radius: 0;
+            }
+        }
+
+        div.btn-group-vertical{
+            width:3rem;
+            margin:0 1rem;
+            margin-top:5.3rem;
+
+        }
+
+        .list-group-form-label{
+            width:100%;
+            font-weight:bold;
+            line-height:3rem;
+        }
+    }
+
+/*--------------------------------------------------------*/
+/* some negative margin if card-footer is inside the body */
+/*--------------------------------------------------------*/
+
+    .card{
+        .card-body{
+            .card-footer{
+                margin:0rem -1rem -2rem -1rem;
+            }
+        }
+    }
+
+    form .card-footer{
+        margin-bottom:-1rem;
+    }
+
+    .card-footer{
+        padding:1rem;
+    }
+
+    .card-footer,.tab-pane{
+        border-bottom-left-radius: 0.3rem;
+        border-bottom-right-radius: 0.3rem;
+    }
